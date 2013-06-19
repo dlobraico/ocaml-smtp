@@ -1,6 +1,14 @@
 UNIX ?= $(shell if ocamlfind query unix >/dev/null 2>&1; then echo --flag unix; fi)
 LWT ?= $(shell if ocamlfind query lwt.unix >/dev/null 2>&1; then echo --flag lwt; fi)
 
+ifneq ($(UNIX),)
+UNIXPATH = dist/build/lib-smtp_unix/*
+endif
+
+ifneq ($(LWT),)
+LWTPATH = dist/build/lib-smtp_lwt/*
+endif
+
 all: build
 
 dist/setup:
@@ -10,7 +18,7 @@ build: dist/setup
 	obuild build
 
 install: build
-	ocamlfind install smtp dist/build/lib-smtp/* dist/build/lib-smtp_unix/* dist/build/lib-smtp_lwt/* lib/META
+	ocamlfind install smtp dist/build/lib-smtp/* $(UNIXPATH) $(LWTPATH) lib/META
 
 uninstall:
 	ocamlfind remove smtp
