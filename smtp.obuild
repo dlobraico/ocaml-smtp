@@ -14,6 +14,10 @@ Flag lwt
         description: build the Lwt backend
         default: false
 
+Flag async
+        description: build the Async backend
+        default: false
+
 library smtp
         modules: Smtp
         src-dir: lib
@@ -30,6 +34,12 @@ library smtp_lwt
         builddepends: smtp, lwt, lwt.unix
         src-dir: lwt
 
+library smtp_async
+        buildable: $async
+        modules: Smtp_async
+        builddepends: smtp, asynx
+        src-dir: asynx
+
 test test_lwt
         mainis: test_lwt.ml
         builddepends: smtp_lwt
@@ -39,5 +49,11 @@ test test_lwt
 test test_unix
         mainis: test_unix.ml
         builddepends: smtp_unix
+        src-dir: test
+        rundir: test
+
+test test_async
+        mainis: test_async.ml
+        builddepends: smtp_async
         src-dir: test
         rundir: test
