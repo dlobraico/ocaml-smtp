@@ -27,3 +27,14 @@ package "lwt" (
  archive(native, plugin) = "smtp_lwt.cmxs"
  exists_if = "smtp_lwt.cma"
 )
+
+package "async" (
+ version = "0.1"
+ description = "SMTP client library for Unix"
+ requires = "smtp async async_unix"
+ archive(byte) = "smtp_async.cma"
+ archive(byte, plugin) = "smtp_async.cma"
+ archive(native) = "smtp_async.cmxa"
+ archive(native, plugin) = "smtp_async.cmxs"
+ exists_if = "smtp_async.cma"
+)
