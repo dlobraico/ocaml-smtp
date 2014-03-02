@@ -9,6 +9,12 @@ begin library "smtp"
       files = [ "smtp.ml" ]
 end
 
+begin library "smtp.async"
+      dirname = "async"
+      files = [ "smtp_async.ml" ]
+      requires = [ "smtp" "async" "async_unix"]
+end
+
 begin library "smtp.lwt"
       dirname = "lwt"
       files = [ "smtp_lwt.ml" ]
@@ -31,4 +37,10 @@ begin test "test_lwt"
       dirname = "test"
       files = [ "test_lwt.ml" ]
       requires = [ "smtp.lwt" "unix" ]
+end
+
+begin test "test_async"
+      dirname = "test"
+      files = [ "test_async.ml" ]
+      requires = [ "smtp.async" "unix" ]
 end
