@@ -10,7 +10,7 @@ ifneq ($(LWT),)
 LWTPATH = dist/build/lib-smtp_lwt/*
 endif
 
-ifneq ($(LWT),)
+ifneq ($(ASYNC),)
 ASYNCPATH = dist/build/lib-smtp_async/*
 endif
 
