@@ -37,7 +37,7 @@ library smtp_lwt
 library smtp_async
         buildable: $async
         modules: Smtp_async
-        builddepends: smtp, asynx
+        builddepends: smtp, async, async_unix
         src-dir: asynx
 
 test test_lwt
