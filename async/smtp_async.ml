@@ -29,7 +29,7 @@ module IO = struct
     | `Eof  -> failwith "got EOF on connection"
 
   let print_line w s = 
-    Writer.write_line w (s ^ "\r\n"); 
+    Writer.write w (s ^ "\r\n"); 
     Writer.flushed w
 end
 
